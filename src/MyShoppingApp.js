@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './ReactStarter.css';
+import './MyShoppingApp.css';
 import Layout from './hoc/Layout/Layout';
 
-class ReactStarter extends Component {
+class MyShoppingApp extends Component {
   render() {
     return (
       <div className="App">
@@ -13,4 +12,4 @@ class ReactStarter extends Component {
   }
 }
 
-export default ReactStarter;
+export default MyShoppingApp;
