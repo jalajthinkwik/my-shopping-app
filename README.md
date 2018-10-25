@@ -5,9 +5,9 @@ This project is a free to use coding standard and patter with all the core react
 ## Install and Run Project
 
 ```
-git clone https://github.com/jalajthinkwik/my-shopping-app.git <br />
-cd my-shopping-app <br />
-npm install <br />
+git clone https://github.com/jalajthinkwik/my-shopping-app.git
+cd my-shopping-app
+npm install
 npm start
 ```
 
