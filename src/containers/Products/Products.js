@@ -14,8 +14,8 @@ class Products extends Component {
             <div className="card">
               <img className="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap"/>
               <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Price : $140</p>
+                <h5 className="card-title">Polo t-shirt 1</h5>
+                <p className="card-text">Price : $20</p>
                 <a href="#" className="btn btn-primary">Add</a>
               </div>
             </div>
@@ -24,8 +24,8 @@ class Products extends Component {
             <div className="card">
               <img className="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap"/>
               <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Price : $140</p>
+                <h5 className="card-title">Polo t-shirt 2</h5>
+                <p className="card-text">Price : $20</p>
                 <a href="#" className="btn btn-primary">Add</a>
               </div>
             </div>
@@ -34,8 +34,8 @@ class Products extends Component {
             <div className="card">
               <img className="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap"/>
               <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Price : $140</p>
+                <h5 className="card-title">Polo t-shirt 3</h5>
+                <p className="card-text">Price : $20</p>
                 <a href="#" className="btn btn-primary">Add</a>
               </div>
             </div>
@@ -44,8 +44,8 @@ class Products extends Component {
             <div className="card">
               <img className="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap"/>
               <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Price : $140</p>
+                <h5 className="card-title">Polo t-shirt 4</h5>
+                <p className="card-text">Price : $20</p>
                 <a href="#" className="btn btn-primary">Add</a>
               </div>
             </div>
@@ -54,8 +54,8 @@ class Products extends Component {
             <div className="card">
               <img className="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap"/>
               <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Price : $140</p>
+                <h5 className="card-title">Polo t-shirt 5</h5>
+                <p className="card-text">Price : $20</p>
                 <a href="#" className="btn btn-primary">Add</a>
               </div>
             </div>
@@ -64,8 +64,8 @@ class Products extends Component {
             <div className="card">
               <img className="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap"/>
               <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Price : $140</p>
+                <h5 className="card-title">Polo t-shirt 6</h5>
+                <p className="card-text">Price : $20</p>
                 <a href="#" className="btn btn-primary">Add</a>
               </div>
             </div>
@@ -86,49 +86,45 @@ class Products extends Component {
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td>Mark</td>
+              <td>Polo t-shirt 1</td>
               <td>$20</td>
-              <td>3</td>
-              <td>$60</td>
+              <td>1</td>
+              <td>$20</td>
             </tr>
             <tr>
               <th scope="row">1</th>
-              <td>Mark</td>
+              <td>Polo t-shirt 2</td>
               <td>$20</td>
-              <td>3</td>
-              <td>$60</td>
-
+              <td>1</td>
+              <td>$20</td>
             </tr>
             <tr>
               <th scope="row">1</th>
-              <td>Mark</td>
+              <td>Polo t-shirt 3</td>
               <td>$20</td>
-              <td>3</td>
-              <td>$60</td>
-
+              <td>1</td>
+              <td>$20</td>
             </tr>
             <tr>
               <th scope="row">1</th>
-              <td>Mark</td>
+              <td>Polo t-shirt 4</td>
               <td>$20</td>
-              <td>3</td>
-              <td>$60</td>
-
+              <td>1</td>
+              <td>$20</td>
             </tr>
             <tr>
               <th scope="row">1</th>
-              <td>Mark</td>
+              <td>Polo t-shirt 5</td>
               <td>$20</td>
-              <td>3</td>
-              <td>$60</td>
-
+              <td>1</td>
+              <td>$20</td>
             </tr>
             <tr>
               <th></th>
               <td></td>
               <td></td>
               <td></td>
-              <td className="font-weight-bold text-primary">$650</td>
+              <td className="font-weight-bold text-primary">$100</td>
             </tr>
           </tbody>
         </table>
