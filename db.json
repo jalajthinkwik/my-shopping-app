@@ -18,40 +18,5 @@
     "price": "28",
     "image": "shaded-grey-womens-tshirt.jpg",
     "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-  },
-  {
-    "id": 4,
-    "name": "Short Length Jacket",
-    "price": "20",
-    "image": "short-length-jacket.jpg",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-  },
-  {
-    "id": 5,
-    "name": "Simple Blue Round Neck Tees",
-    "price": "20",
-    "image": "simple-blue-round-neck.jpg",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-  },
-  {
-    "id": 6,
-    "name": "Simple White Round Neck Tees",
-    "price": "20",
-    "image": "simple-white-round-neck.png",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-  },
-  {
-    "id": 7,
-    "name": "Slim Fit Stylo Jeans",
-    "price": "30",
-    "image": "slim-fit-stylo-jeans.jpg",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-  },
-  {
-    "id": 8,
-    "name": "Workout Special",
-    "price": "20",
-    "image": "work-out-special.jpg",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
   }
 ]
