@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './MyShoppingApp.css';
-import Layout from './hoc/Layout/Layout';
+import MyShoppingAppRoutes from './MyShoppingAppRoutes';
 
 class MyShoppingApp extends Component {
   render() {
     return (
       <div className="App">
-        <Layout />
+        <MyShoppingAppRoutes />
       </div>
     );
   }

@@ -2,78 +2,89 @@ import React, {Component} from 'react';
 
 import Aux from '../../hoc/Aux/Aux';
 import Layout from '../../hoc/Layout/Layout';
+import { GetRequest } from '../../services/ApiServices';
 
 class Products extends Component {
 
+  selected = []
+
+  state = {
+    products: [],
+    selectedProduct: []
+  }
+
+  componentDidMount() {
+    GetRequest('products.json').then((response) => {
+      this.setState({products: response.data});
+    }).catch((error) => {
+      console.error(error);
+    })
+  }
+
+  goToProductListingHandler = () => {
+    this.props.history.push({pathname: "product/1"});
+  }
+
+  addProductToSelectionHandler = (item, i) => {
+    let quantity = 1;
+    this.state.selectedProduct.map((product, index) => {
+      if(product.id == item.id) {
+        item.quantity = quantity++;
+        console.log(item.quantity);
+      }
+    })
+
+    this.selected.push(item);
+    // console.log(item);
+    // console.log(i);
+    this.setState({selectedProduct: this.selected});
+  }
+
   render() {
 
+    let product;
+    let selectedProduct;
+
+    if(this.state.products.length) {
+      product = this.state.products.map((item, i) => {
+        return(
+          <div className="col-4" key={item.id}>
+            <div className="card">
+              <img className="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap"/>
+              <div className="card-body">
+                <h5 className="card-title" onClick={this.goToProductListingHandler}>{item.name}</h5>
+                <p className="card-text">Price : ${item.price}</p>
+                <a className="btn btn-primary" onClick={() => this.addProductToSelectionHandler(item, i)}>Add</a>
+              </div>
+            </div>
+          </div>
+        )
+      })
+    }
+
+    if(this.state.selectedProduct.length) {
+      selectedProduct = this.state.selectedProduct.map((item, i) => {
+        return(
+          <tr key={item.id}>
+            <th scope="row">1</th>
+            <td>{item.name}</td>
+            <td>{item.price}</td>
+            <td>1</td>
+            <td>$20</td>
+          </tr>
+        )
+      })
+    }
+
     return (<Aux>
+      <Layout>
       <div className="container my-5">
         <div className="row products-list">
-          <div className="col-4">
-            <div className="card">
-              <img className="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap"/>
-              <div className="card-body">
-                <h5 className="card-title">Polo t-shirt 1</h5>
-                <p className="card-text">Price : $20</p>
-                <a href="#" className="btn btn-primary">Add</a>
-              </div>
-            </div>
-          </div>
-          <div className="col-4">
-            <div className="card">
-              <img className="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap"/>
-              <div className="card-body">
-                <h5 className="card-title">Polo t-shirt 2</h5>
-                <p className="card-text">Price : $20</p>
-                <a href="#" className="btn btn-primary">Add</a>
-              </div>
-            </div>
-          </div>
-          <div className="col-4">
-            <div className="card">
-              <img className="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap"/>
-              <div className="card-body">
-                <h5 className="card-title">Polo t-shirt 3</h5>
-                <p className="card-text">Price : $20</p>
-                <a href="#" className="btn btn-primary">Add</a>
-              </div>
-            </div>
-          </div>
-          <div className="col-4">
-            <div className="card">
-              <img className="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap"/>
-              <div className="card-body">
-                <h5 className="card-title">Polo t-shirt 4</h5>
-                <p className="card-text">Price : $20</p>
-                <a href="#" className="btn btn-primary">Add</a>
-              </div>
-            </div>
-          </div>
-          <div className="col-4">
-            <div className="card">
-              <img className="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap"/>
-              <div className="card-body">
-                <h5 className="card-title">Polo t-shirt 5</h5>
-                <p className="card-text">Price : $20</p>
-                <a href="#" className="btn btn-primary">Add</a>
-              </div>
-            </div>
-          </div>
-          <div className="col-4">
-            <div className="card">
-              <img className="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap"/>
-              <div className="card-body">
-                <h5 className="card-title">Polo t-shirt 6</h5>
-                <p className="card-text">Price : $20</p>
-                <a href="#" className="btn btn-primary">Add</a>
-              </div>
-            </div>
-          </div>
+          {product}
         </div>
       </div>
       <div className="container">
-        <table class="table table-bordered text-center">
+        <table className="table table-bordered text-center">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -84,41 +95,7 @@ class Products extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Polo t-shirt 1</td>
-              <td>$20</td>
-              <td>1</td>
-              <td>$20</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Polo t-shirt 2</td>
-              <td>$20</td>
-              <td>1</td>
-              <td>$20</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Polo t-shirt 3</td>
-              <td>$20</td>
-              <td>1</td>
-              <td>$20</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Polo t-shirt 4</td>
-              <td>$20</td>
-              <td>1</td>
-              <td>$20</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Polo t-shirt 5</td>
-              <td>$20</td>
-              <td>1</td>
-              <td>$20</td>
-            </tr>
+            {selectedProduct}
             <tr>
               <th></th>
               <td></td>
@@ -128,7 +105,7 @@ class Products extends Component {
             </tr>
           </tbody>
         </table>
-      </div>
+      </div></Layout>
     </Aux>)
   }
 }
