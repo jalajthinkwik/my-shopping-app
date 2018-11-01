@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
 
-import Aux from '../../hoc/Aux/Aux';
 import Layout from '../../hoc/Layout/Layout';
-import { GetRequest } from '../../services/ApiServices';
+import {GetRequest} from '../../services/ApiServices';
 
 class Products extends Component {
 
-  selected = []
+  selected = [];
+  total = 0;
 
   state = {
     products: [],
-    selectedProduct: []
+    selectedProduct: [],
+    totalPrice: 0
   }
 
   componentDidMount() {
@@ -21,23 +22,24 @@ class Products extends Component {
     })
   }
 
-  goToProductListingHandler = () => {
-    this.props.history.push({pathname: "product/1"});
+  goToProductListingHandler = (id) => {
+    console.log(id);
+    this.props.history.push({pathname: `product/${id}`});
   }
 
-  addProductToSelectionHandler = (item, i) => {
-    let quantity = 1;
-    this.state.selectedProduct.map((product, index) => {
-      if(product.id == item.id) {
-        item.quantity = quantity++;
-        console.log(item.quantity);
-      }
-    })
+  addProductToSelectionHandler = (item, i, flag) => {
 
-    this.selected.push(item);
-    // console.log(item);
-    // console.log(i);
-    this.setState({selectedProduct: this.selected});
+    if (flag == 'remove') {
+      item.added = false;
+      let index = this.selected.findIndex(k => k.id === item.id);
+      this.selected.splice(index, 1);
+      this.total = this.total - parseInt(item.price);
+    } else {
+      item.added = true;
+      this.selected.push(item);
+      this.total = this.total + parseInt(item.price);
+    }
+    this.setState({selectedProduct: this.selected, totalPrice: this.total});
   }
 
   render() {
@@ -45,39 +47,50 @@ class Products extends Component {
     let product;
     let selectedProduct;
 
-    if(this.state.products.length) {
+    const importAll = (r) => {
+      return r.keys().map(r);
+    }
+
+    const images = importAll(require.context('../../assets/images', false, /\.(png|jpe?g|svg)$/));
+    console.log(images);
+
+    if (this.state.products.length) {
       product = this.state.products.map((item, i) => {
-        return(
-          <div className="col-4" key={item.id}>
-            <div className="card">
-              <img className="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap"/>
-              <div className="card-body">
-                <h5 className="card-title" onClick={this.goToProductListingHandler}>{item.name}</h5>
-                <p className="card-text">Price : ${item.price}</p>
-                <a className="btn btn-primary" onClick={() => this.addProductToSelectionHandler(item, i)}>Add</a>
-              </div>
+        return (<div className="col-4" key={item.id}>
+          <div className="card">
+            <img className="card-img-top" src={item.image} alt="Card image cap"/>
+            <div className="card-body">
+              <h5 className="card-title" onClick={() => this.goToProductListingHandler(item.id)}>{item.name}</h5>
+              <p className="card-text">Price : ${item.price}</p>
+              {
+                !item.added
+                  ? <a className="btn btn-primary text-white" onClick={() => this.addProductToSelectionHandler(item, i, '')}>Add</a>
+                  : null
+              }
+              {
+                item.added
+                  ? <a className="btn btn-danger text-white" onClick={() => this.addProductToSelectionHandler(item, i, 'remove')}>Remove</a>
+                  : null
+              }
             </div>
           </div>
-        )
+        </div>)
       })
     }
 
-    if(this.state.selectedProduct.length) {
+    if (this.state.selectedProduct.length) {
       selectedProduct = this.state.selectedProduct.map((item, i) => {
-        return(
-          <tr key={item.id}>
-            <th scope="row">1</th>
-            <td>{item.name}</td>
-            <td>{item.price}</td>
-            <td>1</td>
-            <td>$20</td>
-          </tr>
-        )
+        return (<tr key={item.id}>
+          <th scope="row">{i+1}</th>
+          <td>{item.name}</td>
+          <td>${item.price}</td>
+          <td>1</td>
+          <td>${item.price}</td>
+        </tr>)
       })
     }
 
-    return (<Aux>
-      <Layout>
+    return (<Layout>
       <div className="container my-5">
         <div className="row products-list">
           {product}
@@ -94,19 +107,32 @@ class Products extends Component {
               <th className="text-primary" scope="col">Total</th>
             </tr>
           </thead>
-          <tbody>
-            {selectedProduct}
-            <tr>
-              <th></th>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td className="font-weight-bold text-primary">$100</td>
-            </tr>
-          </tbody>
+          {
+            this.state.selectedProduct.length === 0
+              ? <tbody>
+                  <tr>
+                    <td colSpan="5" className="font-weight-bold">No Item Selected</td>
+                  </tr>
+                </tbody>
+              : null
+          }
+          {
+            this.state.selectedProduct.length
+              ? <tbody>
+                  {selectedProduct}
+                  <tr>
+                    <th></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td className="font-weight-bold text-primary">{`$${this.state.totalPrice}`}</td>
+                  </tr>
+                </tbody>
+              : null
+          }
         </table>
-      </div></Layout>
-    </Aux>)
+      </div>
+    </Layout>)
   }
 }
 
