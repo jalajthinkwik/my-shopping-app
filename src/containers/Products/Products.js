@@ -22,10 +22,7 @@ class Products extends Component {
     })
   }
 
-  goToProductListingHandler = (id) => {
-    console.log(id);
-    this.props.history.push({pathname: `product/${id}`});
-  }
+  goToProductListingHandler = (id) => this.props.history.push({pathname: `product/${id}`});
 
   addProductToSelectionHandler = (item, i, flag) => {
 
@@ -47,20 +44,13 @@ class Products extends Component {
     let product;
     let selectedProduct;
 
-    const importAll = (r) => {
-      return r.keys().map(r);
-    }
-
-    const images = importAll(require.context('../../assets/images', false, /\.(png|jpe?g|svg)$/));
-    console.log(images);
-
     if (this.state.products.length) {
       product = this.state.products.map((item, i) => {
         return (<div className="col-4" key={item.id}>
           <div className="card">
             <img className="card-img-top" src={item.image} alt="Card image cap"/>
             <div className="card-body">
-              <h5 className="card-title" onClick={() => this.goToProductListingHandler(item.id)}>{item.name}</h5>
+              <h5 className="card-title product-name" onClick={() => this.goToProductListingHandler(item.id)}>{item.name}</h5>
               <p className="card-text">Price : ${item.price}</p>
               {
                 !item.added

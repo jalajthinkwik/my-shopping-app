@@ -33,7 +33,7 @@ class Product extends Component {
           <div className="card-body">
             <div className="row ">
               <div className="col-4">
-                <img className="img-fluid" src="https://via.placeholder.com/350x300" alt="Card image cap"/>
+                <img className="img-fluid" src={product.image} alt="Card image cap"/>
               </div>
               <div className="col-8">
                 <h5 className="card-title">{product.name}</h5>
